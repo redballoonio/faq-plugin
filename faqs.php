@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: FAQs
-Plugin URI: http://redballoon.io
-Description: Ouput Faq section with built in show/hide.
+Plugin Name: RB FAQ Output
+Plugin URI: https://github.com/redballoonio/faq-plugin
+Description: Display frequently asked questions with collapsable display options.
 Version: 1.0.4
-Author: Red Balloon Digital
+Author: Red Balloon Design Ltd.
 Author URI: http://redballoon.io
 License: GPLv2
 */
@@ -20,17 +20,17 @@ https://docs.google.com/spreadsheets/d/1apC0th0X_rq8ybvTDsp40lWcHfthdna8WMbAywX7
 
 # Updates to make:
 
-* Add filters to the content output?
 */
 
 /*
 Changelog
 
 --  --  1.0.4  --  --
-* Update to how files are enqueued. The files are registered here and enqueued in the shortcode file.
+* Update to how files are enqueued. The files are registered in this file and enqueued in the shortcode file.
 
 --  --  1.0.3  --  --
 * Added faqs_taxonomies
+
 */
 // Custom Post Type
 
@@ -88,13 +88,13 @@ function rbd_faqs_taxonomies() {
 }
 
 // Scripts
-function faqs_register_scripts() {
+function rbd_faqs_register_scripts() {
     if ( shortcode_exists('faqs') ) {
         wp_register_style( 'rbd-faqs-styles', plugins_url( 'css/faqs.min.css', __FILE__ ) );
     	wp_register_script( 'rbd-faqs-scripts', plugins_url( 'js/faqs.js', __FILE__ ), array('jquery'), '1.0', true );
     };
 };
-add_action( 'wp_enqueue_scripts', 'faqs_register_scripts' );
+add_action( 'wp_enqueue_scripts', 'rbd_faqs_register_scripts' );
 
 // Shortcodes
 add_shortcode('faqs', 'rbd_faqs_shortcode');

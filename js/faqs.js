@@ -37,23 +37,23 @@
     };
 
     function getGETvariable(key){
-    if ( window.location.search.length > 0) {
-        var getArray = window.location.search.substr(1).split('&'),
-            getObj = {};
-        for (var i = 0; i < getArray.length; i++) {
-            var indArray = getArray[i].split('=');
-            getObj[indArray[0]] = indArray[1];
+        if ( window.location.search.length > 0) {
+            var getArray = window.location.search.substr(1).split('&'),
+                getObj = {};
+            for (var i = 0; i < getArray.length; i++) {
+                var indArray = getArray[i].split('=');
+                getObj[indArray[0]] = indArray[1];
+            }
+            if (typeof key !== undefined && typeof getObj[key]!== 'undefined') {
+                return getObj[key];
+            } else {
+                return getObj
+            }
         }
-        if (typeof key !== undefined && typeof getObj[key]!== 'undefined') {
-            return getObj[key];
-        } else {
-            return getObj
+        else {
+            return false;
         }
     }
-    else {
-        return false;
-    }
-}
 
     $('.show-hide').showHide({
       speed: 250,       // speed you want the toggle to happen
@@ -79,4 +79,6 @@
             }, 10)
         }
     });
+
+    console.log('test');
 })(jQuery);
