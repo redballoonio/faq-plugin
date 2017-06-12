@@ -54,7 +54,6 @@ Output faqs for a single category. The first question is open, the rest are coll
 1. Upload the plugin files to the `/wp-content/plugins/` directory of your site
 1. Activate the plugin through the 'Plugins' menu in Wordpress
 1. Add questions as custom posts in wordpress
-1. Add a category for the questions
 1. Add the `[faqs][/faqs]` shortcode where you want the video to be output
 1. Use the shortcode options to customise how the video gets displayed
 
