@@ -39,11 +39,11 @@ Output faqs for a single category. The first question is open, the rest are coll
 
 **Initial state of the questions**
 
-`show_question="show/hide/first" (default: "close")`
+`show_question="show/close/first" (default: "close")`
 
 **Initial state of the categories**
 
-`show_category="show/hide/first" (default: "close")`
+`show_category="show/close/first" (default: "close")`
 
 **Type of Icon**
 
