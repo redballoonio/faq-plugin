@@ -98,8 +98,8 @@ function events_options_add_page() {
 };
 
 function rbd_faq_options_page_callback(){
-    wp_enqueue_style( 'rbd-faqs-styles', plugins_url( 'admin/faq-admin.css', __FILE__ ), '1.0' );
-    wp_enqueue_script( 'rbd-faqs-styles', plugins_url( 'admin/faq-admin.js', __FILE__ ), array('jquery'), '1.0' );
+    wp_enqueue_style( 'rbd-faqs-styles', plugins_url( '../admin/faq-admin.css', __FILE__ ), '1.0' );
+    wp_enqueue_script( 'rbd-faqs-styles', plugins_url( '../admin/faq-admin.js', __FILE__ ), array('jquery'), '1.0' );
     ?>
 
     <div class="wrap">
