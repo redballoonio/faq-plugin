@@ -49,6 +49,18 @@ Output faqs for a single category. The first question is open, the rest are coll
 
 `icon="[icon-type]" (default: "none")`
 
+= Linking directly to a question =
+
+To link directly to a page, add a "targetQuestion" get variable to the end of the url with the question id like so:
+
+`http://yoursite.com/faq-page/?targetQuestion=21`
+
+When following that link the correct category and question will be open and the user will be moved to the correct location on the page.
+
+= Help us improve this plugin =
+
+If you have any feedback or require any support using this plugin, get in touch with us by email at [support@redballoon.io](mailto:support@redballoon.io)
+
 == Installation ==
 1. Download the plugin files
 1. Upload the plugin files to the `/wp-content/plugins/` directory of your site
