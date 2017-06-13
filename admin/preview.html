@@ -2,42 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>Preview</title>
-    <meta name="noindex" value="1">
+    <title>RBD FAQ Preview</title>
+    <!-- prevent this page from appearing on search engines: -->
+    <meta name="robots" content="noindex">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link href="./preview.css" rel="stylesheet" />
     <link href="../public/css/faqs.min.css" rel="stylesheet">
-
-    <style>
-        html {
-            font-size: 16px;
-            font-family: sans-serif;
-        }
-        
-        body {
-            line-height: 18px;
-        }
-        
-        a {
-            text-decoration: none;
-        }
-        
-        pre {
-            max-width: 100%;
-            padding: 0.6rem 0.1rem 0.6rem;
-            background: #eaeaea;
-            overflow-x: scroll;
-        }
-    </style>
 
 </head>
 
 <body>
 
     <div id="rbd-faq-preview">
-        <h3>Shortcode:</h3>
-        <pre>[faq][/faq]</pre>
+        <h3>Display faqs with title and plus symbol:</h3>
+        <pre>[faqs icon="plus"][/faqs]</pre>
         <div class="rbd-faq-section plus">
             <div class="rbd-faq-category">
                 <div class="rbd-faq-cat-title">
@@ -86,27 +65,27 @@
             <!--rbd-faq-category-->
         </div>
 
-        <h3>Shortcode:</h3>
-        <pre>[faqs collapsable="both" icon="arrow" iconalt="plus" show_category="show"][/faqs]</pre>
+        <h3>Display FAQs with collapsable Categories with arrows and collapsable questions with plus icons:</h3>
+        <pre>[faqs collapsable="both" icon="arrow" icon_secondary="plus" show_category="show"][/faqs]</pre>
 
         <div class="rbd-faq-section arrow">
             <div class="rbd-faq-category">
                 <a role="button" class="show-hide open" href="#" rel="#rbd-faq-sliding-cat-2">
                     <div class="rbd-faq-cat-title">
-                        <h4>Cat title</h4>
+                        <h4>Category title</h4>
                     </div>
                     <div class="close-icon"></div>
                 </a>
                 <div id="rbd-faq-sliding-cat-2" class="rbd-faq-sliding-div" style="">
                     <div class="rbd-faq plus" id="rbd-faq-question-34">
                         <a role="button" class="show-hide" href="#" rel="#rbd-faq-sliding-div-2-1">
-                            <div class="rbd-faq-question">Test question 3</div>
+                            <div class="rbd-faq-question">Test question 1</div>
                             <!--question-->
                             <div class="close-icon"></div>
                             <!--close-icon-->
                         </a>
                         <!--show_hide-->
-                        <div id="rbd-faq-sliding-div-2-1" class="rbd-faq-sliding-div rbd-faq-answer" style="display:none;"> This is the answer for the third question.</div>
+                        <div id="rbd-faq-sliding-div-2-1" class="rbd-faq-sliding-div rbd-faq-answer" style="display:none;"> This is the answer of the question.</div>
                         <!--rbd-faq-sliding-div-->
                     </div>
                     <!--faq-->
@@ -124,13 +103,13 @@
                     <!--faq-->
                     <div class="rbd-faq plus" id="rbd-faq-question-32">
                         <a role="button" class="show-hide" href="#" rel="#rbd-faq-sliding-div-2-3">
-                            <div class="rbd-faq-question">Test question</div>
+                            <div class="rbd-faq-question">Test question 3</div>
                             <!--question-->
                             <div class="close-icon"></div>
                             <!--close-icon-->
                         </a>
                         <!--show_hide-->
-                        <div id="rbd-faq-sliding-div-2-3" class="rbd-faq-sliding-div rbd-faq-answer" style="display:none;"> This is the answer of the question that goes here.</div>
+                        <div id="rbd-faq-sliding-div-2-3" class="rbd-faq-sliding-div rbd-faq-answer" style="display:none;"> This is the answer for the third question.</div>
                         <!--rbd-faq-sliding-div-->
                     </div>
                     <!--faq-->
@@ -143,109 +122,8 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="./preview.js"></script>
     <script src="../public/js/faqs.js"></script>
-
-    <script>
-        (function() {
-            var custStyle = '';
-
-            var styleTag = document.createElement("style");
-            styleTag.id = "dynamic-styles";
-
-            document.head.append(styleTag);
-
-            window.addEventListener('message', function(e) {
-
-                if (!e) {
-                    return false;
-                };
-
-                var data = parseMessage(decodeURIComponent(e.data));
-
-                var css = dataToCss(data);
-
-                console.log(data, css);
-
-                styleTag.innerHTML = css;
-
-            });
-
-            function parseMessage(raw) {
-                var dataRaw = raw;
-                var dataSplit = dataRaw.split('&');
-                var data = {};
-
-                for (var i = 0; i < dataSplit.length; i++) {
-                    var keyValPair = dataSplit[i].split('=');
-                    data[keyValPair[0]] = keyValPair[1].replace('+', ' ') || '';
-                }
-                return data;
-            };
-
-            function dataToCss(data) {
-
-                // Answer styles:
-                var answerStyles = '.rbd-faq-answer{';
-                if (data['rbd-faq-answer-bg']) {
-                    answerStyles += 'background:';
-                    answerStyles += data['rbd-faq-answer-bg'];
-                    answerStyles += ';';
-                };
-                if (data['rbd-faq-answer-color']) {
-                    answerStyles += 'color:';
-                    answerStyles += data['rbd-faq-answer-color'];
-                    answerStyles += ';';
-                };
-                answerStyles += '}\n';
-
-                // Question styles:
-                var questionStyles = '.rbd-faq-section .show-hide {';
-                if (data['rbd-faq-question-bg']) {
-                    questionStyles += 'background:';
-                    questionStyles += data['rbd-faq-question-bg'];
-                    questionStyles += ';';
-                };
-
-                if (data['rbd-faq-question-color']) {
-                    questionStyles += 'color:';
-                    questionStyles += data['rbd-faq-question-color'];
-                    questionStyles += ';';
-                };
-                questionStyles += '}\n';
-
-
-                // Category styles:
-                var catStyles = '.rbd-faq-category>.show-hide, .rbd-faq-cat-title {';
-                if (data['rbd-faq-category-bg']) {
-                    catStyles += 'background:';
-                    catStyles += data['rbd-faq-category-bg'];
-                    catStyles += ';';
-                };
-
-                if (data['rbd-faq-category-color']) {
-                    catStyles += 'color:';
-                    catStyles += data['rbd-faq-category-color'];
-                    catStyles += ';';
-                };
-                catStyles += '}\n';
-
-
-                // Icon styles:
-                var iconStyles = '.rbd-faq-section .close-icon {';
-                if (data['rbd-faq-icon-color']) {
-                    iconStyles += 'color:';
-                    iconStyles += data['rbd-faq-icon-color'];
-                    iconStyles += ';';
-                };
-                iconStyles += '}\n';
-
-                var css = questionStyles + answerStyles + catStyles + iconStyles;
-
-                return css;
-            }
-        })();
-    </script>
 
 </body>
 

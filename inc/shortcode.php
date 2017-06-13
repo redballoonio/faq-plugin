@@ -12,7 +12,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 'show_category' => 'close',	    	// show/close/first category (default is closed)
                 'collapsable' => 'question',		// Category, Question, both or none. Sets up the collapsability of the plugin.
                 'icon' => 'none',                   // Type of close icon. default none. Types: arrow, plus.
-                'iconalt' => ''                    	// Icon for question. Class added to individual faqs. set none to remove icons from questions. Types: arrow, plus.
+                'icon_secondary' => ''                    	// Icon for question. Class added to individual faqs. set none to remove icons from questions. Types: arrow, plus.
             ), $atts
         )
     );
@@ -66,6 +66,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             $faqs_cpt_args = array(
                 'posts_per_page' => 200,
                 'post_type' => 'faqs',
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
                 'tax_query' => array(array(
                     'taxonomy' => 'faqs_cat',
                     'field' => 'slug',
@@ -134,7 +136,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                     $showQuestion = true;
                 }
 
-                $question_output 	.= '<div class="rbd-faq '.$iconalt.'" id="rbd-faq-question-'.$faq->ID.'">';
+                $question_output 	.= '<div class="rbd-faq '.$icon_secondary.'" id="rbd-faq-question-'.$faq->ID.'">';
 
                 if ($collapse_question){
                     $question_output 	.= '<a role="button" class="show-hide';
@@ -178,6 +180,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             'posts_per_page' => 200,
             'post_type' => 'faqs',
             'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
             'exclude' => $exclude
         );
 
@@ -198,7 +202,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 $showQuestion = true;
             }
 
-            $question_output 	.= '<div class="rbd-faq '.$iconalt.'" id="rbd-faq-question-'.$faq->ID.'">';
+            $question_output 	.= '<div class="rbd-faq '.$icon_secondary.'" id="rbd-faq-question-'.$faq->ID.'">';
 
             if ($collapse_question){
                 $question_output 	.= '<a role="button" class="show-hide';

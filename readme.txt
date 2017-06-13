@@ -26,32 +26,64 @@ Output faqs for a single category. The first question is open, the rest are coll
 
 **FAQ categories to output**
 
-`cat="[cat-id]" (default:blank)`
+Only show faqs from these categories. Add the slugs as a comma seperated list. You can find the slug for the categories on the "FAQ Category" page in wordpress.
 
+`cat="[cat-slug]" (default:blank)`
 
 **Question to exlude**
 
+If there are any faqs that you want to exclude from being output, add their IDs as a comma seperated list to this attribute.
+
 `exclude="[faq-id]" (default:blank)`
 
+
 **Show or hide the category titles**
+
+Whether to show or hide the category titles. If this is set to hide and the `cat` attribute isn't set then all of the questions and answers will be output.
 
 `title="show/hide" (default: "show)`
 
 **Initial state of the questions**
 
+Change the intial state of the questions when a visitor opens the page with the FAQs on. If the questions aren't collapsable then this attribute does nothing.
+
+* "close" - all of the answers closed
+* "show" - all of the answers expanded
+* "first" - the first answer expanded, other answers closed
+
 `show_question="show/close/first" (default: "close")`
 
 **Initial state of the categories**
+
+Change the intial state of the categories when a visitor opens the page with the FAQs on. If the categories aren't collapsable then this attribute does nothing.
+
+* "close" - all of the categories closed
+* "show" - all of the categories expanded
+* "first" - the first categories expanded, other categories closed
 
 `show_category="show/close/first" (default: "close")`
 
 **Type of Icon**
 
+Changes the type of icon used for collapsable elements. Effects both the categories and answers. Available options:
+
+* "arrow"
+* "plus"
+
 `icon="[icon-type]" (default: "none")`
+
+**Secondary icon type**
+
+Changes the type of icon used for collapsable answers when `collapsable` is set to both. Otherwise does nothing. Available options:
+
+* "arrow"
+* "plus"
+
+`icon_secondary="[icon-type]" (default: "none")`
 
 = Linking directly to a question =
 
-To link directly to a page, add a "targetQuestion" get variable to the end of the url with the question id like so:
+To link directly to a question from another page, add a "targetQuestion" get variable to the end of the url with the question id like so:
 
 `http://yoursite.com/faq-page/?targetQuestion=21`
 
