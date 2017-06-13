@@ -70,7 +70,7 @@
         }
     });
 
-    $(window).load(function(){
+    $(window).on('load', function(){
         var targetQuestion = getGETvariable('targetQuestion');
         if (typeof targetQuestion === 'string') {
             var scrollTo = jQuery('#rbd-faq-question-'+targetQuestion).offset().top - ($(window).height()/10) ;
@@ -79,6 +79,4 @@
             }, 10)
         }
     });
-
-    console.log('test');
 })(jQuery);

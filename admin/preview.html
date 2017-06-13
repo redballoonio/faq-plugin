@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Preview</title>
+  <meta name="noindex" value="1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link href="../public/css/faqs.min.css" rel="stylesheet">
+
+  <style>
+    html {
+      font-size: 16px;
+      font-family: sans-serif;
+    }
+    
+    body {
+      line-height: 18px;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    body .rbd-faq-section .show-hide {
+      background: 222;
+      color: 1111111;
+    }
+    
+    body .rbd-faq-answer {
+      background: 222;
+      color: 222;
+    }
+    
+    body .rbd-faq-section .show-hide {
+      background: 222;
+      color: 222;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="rbd-faq-preview">
+    <div class="rbd-faq-section ">
+      <div class="rbd-faq-category">
+        <div class="rbd-faq-cat-title">
+          <h4>Category 1</h4>
+        </div>
+        <div class="rbd-faq " id="rbd-faq-question-6">
+          <a class="show-hide" href="#" rel="#rbd-faq-sliding-div-1-1">
+            <div class="rbd-faq-question">Last Question</div>
+            <!--question-->
+            <div class="close-icon"></div>
+            <!--close-icon-->
+          </a>
+          <!--show_hide-->
+          <div id="rbd-faq-sliding-div-1-1" class="rbd-faq-sliding-div rbd-faq-answer" style="display: none;"> This is another answer</div>
+          <!--rbd-faq-sliding-div-->
+        </div>
+        <!--faq-->
+        <div class="rbd-faq " id="rbd-faq-question-5">
+          <a class="show-hide" href="#" rel="#rbd-faq-sliding-div-1-2">
+            <div class="rbd-faq-question">Lorum Ipsum</div>
+            <!--question-->
+            <div class="close-icon"></div>
+            <!--close-icon-->
+          </a>
+          <!--show_hide-->
+          <div id="rbd-faq-sliding-div-1-2" class="rbd-faq-sliding-div rbd-faq-answer" style="display: none;"> dolor sit amet, consectetur adipiscing elit. Curabitur vitae laoreet leo. Phasellus vel urna id est malesuada elementum nec mattis mi. Duis rutrum ligula id risus varius cursus. Duis sollicitudin odio non odio convallis, posuere mollis dui blandit.
+            Sed mi nunc, pulvinar ac scelerisque ut, pellentesque sed sem. Pellentesque cursus condimentum nunc, at faucibus lacus vehicula id. Proin congue nibh in velit finibus, quis porta enim ullamcorper. Quisque fringilla faucibus tempor. Cras venenatis
+            sagittis nunc, vel accumsan enim ultrices vitae. Nulla scelerisque ut ante a maximus. Aliquam sed feugiat metus. Cras quam sem, rhoncus id elit eget, rutrum finibus justo. Cras in ipsum vel elit dapibus dictum. In quis justo vel erat egestas
+            molestie sagittis vel metus. Aliquam finibus bibendum lorem, vitae malesuada justo gravida vel. Maecenas mollis justo leo, sed consequat arcu suscipit sed.</div>
+          <!--rbd-faq-sliding-div-->
+        </div>
+        <!--faq-->
+        <div class="rbd-faq " id="rbd-faq-question-4">
+          <a class="show-hide" href="#" rel="#rbd-faq-sliding-div-1-3">
+            <div class="rbd-faq-question">Question title</div>
+            <!--question-->
+            <div class="close-icon"></div>
+            <!--close-icon-->
+          </a>
+          <!--show_hide-->
+          <div id="rbd-faq-sliding-div-1-3" class="rbd-faq-sliding-div rbd-faq-answer" style="display: none;"> This is the answer to the question.</div>
+          <!--rbd-faq-sliding-div-->
+        </div>
+        <!--faq-->
+      </div>
+      <!--rbd-faq-category-->
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="../public/js/faqs.js"></script>
+
+  <script>
+    (function() {
+      var custStyle = '';
+
+      var styleTag = document.createElement("style");
+      styleTag.id = "dynamic-styles";
+
+      document.head.append(styleTag);
+
+      window.addEventListener('message', function(e) {
+
+        if (!e) {
+          return false;
+        };
+
+        var data = parseMessage(decodeURIComponent(e.data));
+
+        var css = dataToCss(data);
+
+        console.log(css);
+
+        styleTag.innerHTML = css;
+
+      });
+
+      function parseMessage(raw) {
+        var dataRaw = raw;
+        var dataSplit = dataRaw.split('&');
+        var data = {};
+
+        for (var i = 0; i < dataSplit.length; i++) {
+          var keyValPair = dataSplit[i].split('=');
+          data[keyValPair[0]] = keyValPair[1] || '';
+        }
+        return data;
+      };
+
+      function dataToCss(data) {
+
+        // Answer styles:
+        var answerStyles = '.rbd-faq-answer{';
+        if (data['rbd-faq-answer-bg']) {
+          answerStyles += 'background:';
+          answerStyles += data['rbd-faq-answer-bg'];
+          answerStyles += ';';
+        };
+        if (data['rbd-faq-answer-color']) {
+          answerStyles += 'color:';
+          answerStyles += data['rbd-faq-answer-color'];
+          answerStyles += ';';
+        };
+        answerStyles += '}\n';
+
+        // Question styles:
+        var questionStyles = '.rbd-faq-section .show-hide {';
+        if (data['rbd-faq-question-bg']) {
+          questionStyles += 'background:';
+          questionStyles += data['rbd-faq-question-bg'];
+          questionStyles += ';';
+        };
+
+        if (data['rbd-faq-question-color']) {
+          questionStyles += 'color:';
+          questionStyles += data['rbd-faq-question-color'];
+          questionStyles += ';';
+        };
+        questionStyles += '}\n';
+
+
+        // Question styles:
+        var catStyles = '.rbd-faq-section .show-hide {';
+        if (data['rbd-faq-category-bg']) {
+          catStyles += 'background:';
+          catStyles += data['rbd-faq-category-bg'];
+          catStyles += ';';
+        };
+
+        if (data['rbd-faq-category-color']) {
+          catStyles += 'color:';
+          catStyles += data['rbd-faq-category-color'];
+          catStyles += ';';
+        };
+        catStyles += '}\n';
+
+
+        var css = questionStyles + answerStyles + catStyles;
+
+        return css;
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

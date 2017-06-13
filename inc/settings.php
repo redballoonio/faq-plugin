@@ -105,13 +105,15 @@ function rbd_faq_options_page_callback(){
     <div class="wrap">
         <h2>My Plugin Options</h2>
 
-        <h3>Demo</h3>
+        <h3>Preview</h3>
 
         <div id="rbd-faq-preview">
-
+            <div class="inner">
+                <iframe src="<?php echo plugins_url( '../admin/preview.html', __FILE__ ); ?>"></iframe>
+            </div>
         </div>
 
-        <form action="options.php" method="POST">
+        <form action="options.php" method="POST" id="options-form">
             <?php settings_fields( 'rbd-faq-settings-1' ); ?>
             <?php do_settings_sections( 'rbd-faq-options' ); ?>
             <?php submit_button(); ?>

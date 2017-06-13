@@ -2,15 +2,8 @@
   position: relative;
   display: block;
 }
-.rbd-faq-section .rbd-faq-cat-title h4 {
-  margin: 0;
-}
-.rbd-faq-section .rbd-faq-cat-title,
-.rbd-faq-section .show-hide,
-.rbd-faq-section .rbd-faq-sliding-div {
+.rbd-faq-section .show-hide {
   display: block;
-  padding: 1rem 0.5rem;
-  margin-bottom: 0.3rem;
 }
 .rbd-arrow .close-icon,
 .rbd-plus .rbd-arrow .close-icon {
