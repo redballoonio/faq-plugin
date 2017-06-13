@@ -1,4 +1,4 @@
-# RB FAQ Output 
+# RB Simple FAQs 
 **Contributors:** markredballoon, redballoondesignltd  
 **Tags:** Frequently asked questions, faqs, faq, questions and answers, customisation  
 **Requires at least:** 4.3  
@@ -7,12 +7,12 @@
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-A simple lightweight plugin for managing and displaying Frequently asked questions using a custom post type.
+A simple, lightweight plugin for managing and displaying frequently asked questions using a custom post type.
 
 
 ## Description 
 
-A simple lightweight plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories allowing you to manage the output of individual questions or categories across your site, output the entire list. The questions and/or categories can be collapsable, making them easier to view. The output from this plugin comes mostly unstyled, allowing for maximum customisation using css.
+A simple, lightweight plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories allowing you to manage the output of individual questions or categories across your site, output the entire list. The questions and/or categories can be collapsable, making them easier to view. The output from this plugin comes mostly unstyled, allowing for maximum customisation using css.
 
 The background and text colours can be altered on an options page with a live preview of the output.
 
@@ -21,13 +21,13 @@ The background and text colours can be altered on an options page with a live pr
 
 These are some examples of how to output questions using shortocodes.
 
-Default settings: output all of the faqs. Divided by category (if they exist), output headings for category names:
+Default settings: output all of the faqs divided by category (if they exist), output headings for category names:
 
 `[faqs][/faqs]`
 
-Output faqs for a single category. The first question is open, the rest are collapsed:
+Output faqs for a single category, "returns". The first question is open, the rest are collapsed:
 
-`[faqs cat="1" show_question="first"][/faqs]`
+`[faqs cat="returns" show_question="first"][/faqs]`
 
 
 ### Shortcode options 
@@ -38,6 +38,17 @@ Only show faqs from these categories. Add the slugs as a comma separated list. Y
 
 `cat="[cat-slug]" (default:blank)`
 
+**What parts should be collapsable**
+
+Determines whether the categories and the questions are collapsable.
+
+* none 
+* question
+* category
+* both
+
+`collapsable="[options]" (default:"questions")`
+
 **Question to exclude**
 
 If there are any faqs that you want to exclude from being output, add their IDs as a comma separated list to this attribute.
@@ -47,7 +58,7 @@ If there are any faqs that you want to exclude from being output, add their IDs 
 
 **Show or hide the category titles**
 
-Whether to show or hide the category titles. If this is set to hide and the `cat` attribute isn't set then all of the questions and answers will be output.
+Whether to show or hide the category titles. If this is set to hide and the `cat` attribute isn't set then all of the questions and answers will be output. `collapsable="both"` or `collapsable="categories"` overwrites this option.
 
 `title="show/hide" (default: "show)`
 
@@ -142,6 +153,7 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 ### 1. Customising the output in Wordpress
 ![Example of the live preview](https://github.com/redballoonio/video-plugin/blob/master/screenshots/modal.png "Example of the live preview")
+
 
 ## Changelog 
 

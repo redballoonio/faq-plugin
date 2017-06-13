@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: RB FAQ Output
+Plugin Name: RB Simple FAQs
 Plugin URI: https://github.com/redballoonio/faq-plugin
 Description: Display frequently asked questions with collapsable display options.
 Version: 1.1.0
