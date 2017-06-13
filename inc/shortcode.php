@@ -50,9 +50,10 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
     // If there is a target Question GET variable:
     $target_question = isset($_GET['targetQuestion']) ? intval($_GET['targetQuestion']) : 0 ;
 
-	// For each required category....
+	// For each category....
     if (count($faqs_cats)>0 && ($title == 'show' OR ($collapsable == 'both' OR $collapsable == 'category'))){
         foreach( $faqs_cats as $faqs_cat ) {
+            // If the cat isn't included:
             if ( count($cats) > 0 AND strlen($cats[0]) > 0 AND !in_array($faqs_cat->slug, $cats) ){
                 continue;
             }

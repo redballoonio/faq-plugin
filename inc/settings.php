@@ -1,12 +1,16 @@
 <?php
+
 /*
-Register the settings
+Register the settings and setting section.
 */
 
 function rbd_faqs_settings_register($post_id){
 
     // Admin section:
     add_settings_section( 'rbd-faq-settings-1', 'FAQ Settings', 'rbd_faq_settings_section_1_output', 'rbd-faq-options' );
+
+
+    // TODO: merge these into one setting, saved as an array.
 
     // Add settings
     add_settings_field( 'rbd-faq-question-color', 'Question Color', 'rbd_faq_question_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
@@ -73,7 +77,7 @@ function rbd_faq_icon_color_output(){
     echo '<input type="text" name="rbd-faq-icon-color" value="' . $setting . '" />';
 }
 
-
+// TODO: add this server side validation
 function rbd_faq_validate_html_color($color, $named) {
   /* Validates hex color, adding #-sign if not found. Checks for a Color Name first to prevent error if a name was entered (optional).
   *   $color: the color hex value stirng to Validates
@@ -92,7 +96,7 @@ function rbd_faq_validate_html_color($color, $named) {
  
   if (preg_match('/^#[a-f0-9]{6}$/i', $color)) {
     // Verified OK
-  }else if (preg_match('/^[a-f0-9]{6}$/i', $color)) {
+  } else if (preg_match('/^[a-f0-9]{6}$/i', $color)) {
     $color = '#' . $color;
   }
   return $color;
@@ -101,19 +105,21 @@ function rbd_faq_validate_html_color($color, $named) {
 
 add_action( 'admin_init', 'rbd_faqs_settings_register', 10, 1 );
 
-//Add settings to menu
-add_action( 'admin_menu', 'events_options_add_page' );
 
-function events_options_add_page() {
+//Add settings to menu
+function rbd_faq_options_add_page() {
     add_submenu_page( 'edit.php?post_type=faqs', 'FAQ Options', 'Options', 'manage_options', 'rbd-faq-options', 'rbd_faq_options_page_callback' );
 };
+add_action( 'admin_menu', 'rbd_faq_options_add_page' );
 
+// FAQ page callback
 function rbd_faq_options_page_callback(){
     wp_enqueue_style( 'rbd-faqs-styles', plugins_url( '../admin/faq-admin.css', __FILE__ ), '1.0' );
     wp_enqueue_script( 'rbd-faqs-styles', plugins_url( '../admin/faq-admin.js', __FILE__ ), array('jquery'), '1.0' );
     ?>
 
     <div class="wrap">
+        
         <h2>My Plugin Options</h2>
 
         <form action="options.php" method="POST" id="options-form">

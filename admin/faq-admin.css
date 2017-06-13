@@ -4,10 +4,12 @@
 }
 
 #rbd-faq-preview {
+  margin-bottom: 32px;
   margin-bottom: 2rem;
   display: block;
   width: 100%;
   max-width: 700px;
+  padding: 8px;
   padding: 0.5rem;
   background: #fff;
 }
@@ -28,8 +30,22 @@
 
 input.rbd-faq-invalid-color {
   color: darkred;
+  -webkit-animation: borderColor 2s;
   animation: borderColor 2s;
+  -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+}
+
+@-webkit-keyframes borderColor {
+  0% {
+    border-color: #ddd;
+  }
+  25% {
+    border-color: red;
+  }
+  100% {
+    border-color: #ddd;
+  }
 }
 
 @keyframes borderColor {

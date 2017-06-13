@@ -3,7 +3,7 @@
 Plugin Name: RB FAQ Output
 Plugin URI: https://github.com/redballoonio/faq-plugin
 Description: Display frequently asked questions with collapsable display options.
-Version: 1.0.4
+Version: 1.1.0
 Author: Red Balloon Design Ltd.
 Author URI: http://redballoon.io
 License: GPLv2
@@ -13,12 +13,6 @@ License: GPLv2
 
 View the readme here:
 https://docs.google.com/spreadsheets/d/1apC0th0X_rq8ybvTDsp40lWcHfthdna8WMbAywX7DBU/pubhtml?gid=1345923635&single=true
-
-*/
-
-/*
-
-# Updates to make:
 
 */
 

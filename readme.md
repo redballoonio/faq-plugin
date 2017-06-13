@@ -1,6 +1,6 @@
 # RB FAQ Output 
 **Contributors:** markredballoon, redballoondesignltd  
-**Tags:** Frequently asked questions, FAQs, questions  
+**Tags:** Frequently asked questions, faqs, faq, questions and answers  
 **Requires at least:** 4.3  
 **Tested up to:** 4.8  
 **Stable tag:** 4.8  
@@ -11,12 +11,19 @@ A plugin for managing and displaying Frequently asked questions using a custom p
 
 
 ## Description 
-A plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories. The questions and/or categories can be collapsable, making them easier to view. The output from this plugin comes mostly unstyled, allowing for maximum customisation using css.
+
+A plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories. The questions and/or categories can be collapsable.
+
+The output from this plugin comes mostly with very basic styles, allowing for maximum customisation using css. The background and colours can be altered on an options page with a live preview of the output.
+
+The faqs can be categoriesed to display different questions on different pages or add headings.
 
 
 ### Shortcode examples 
 
-Output all of the faqs. Divided by category, output headings for category names:
+These are some examples of how to output questions using shortocodes.
+
+Default settings: output all of the faqs. Divided by category (if they exist), output headings for category names:
 
 `[faqs][/faqs]`
 
@@ -104,8 +111,8 @@ If you have any feedback or require any support using this plugin, get in touch 
 1. Upload the plugin files to the `/wp-content/plugins/` directory of your site
 1. Activate the plugin through the 'Plugins' menu in Wordpress
 1. Add questions as custom posts in wordpress
-1. Add the `[faqs][/faqs]` shortcode where you want the video to be output
-1. Use the shortcode options to customise how the video gets displayed
+1. Add the `[faqs][/faqs]` shortcode where you want the questions to be output
+1. Use the shortcode options to customise how the questions gets displayed
 
 
 ## Frequently Asked Questions 
@@ -113,12 +120,14 @@ If you have any feedback or require any support using this plugin, get in touch 
 
 ### Where do I change my category title? 
 
-Change the title of the category on this page: your.website/wp-admin/edit-tags.php?taxonomy=faqs_cat&post_type=faqs
+Change the title of the category on the FAQ Category page in wordpress
+
+your.website/wp-admin/edit-tags.php?taxonomy=faqs_cat&post_type=faqs
 
 
-### Why are none of my questions are being output? 
+### Why are some of my questions not being output? 
 
-If your questions aren't being output you may not have added a category to the questions. Create a new FAQ category and asign all of the questions to it.
+If your questions aren't being output you may not have added a category to the questions. Change the `title` attribute to hide and leave the `cat` attribute blank to show all of the categories including the uncategorised options.
 
 
 ### Does this plugin support category higherarchy? 
@@ -132,9 +141,17 @@ This plugin doesn't support categories with a higherarchy.
 ## Changelog 
 
 
-### 1.0 
+### 1.1.0 
 
-* Added video post type, Modals and controlling the videos using the youtube api
+* Published plugin
+* Added options page to wordpress
+
+
+### 1.0.* 
+
+* Developed plugin
+* Added categories
+* Added linking to a specific question using get variable
 
 
 ## Upgrade Notice 
