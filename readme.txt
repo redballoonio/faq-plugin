@@ -1,21 +1,19 @@
 === RB FAQ Output ===
 Contributors: markredballoon, redballoondesignltd
-Tags: Frequently asked questions, faqs, faq, questions and answers
+Tags: Frequently asked questions, faqs, faq, questions and answers, customisation
 Requires at least: 4.3
 Tested up to: 4.8
 Stable tag: 4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin for managing and displaying Frequently asked questions using a custom post type.
+A simple lightweight plugin for managing and displaying Frequently asked questions using a custom post type.
 
 == Description ==
 
-A plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories. The questions and/or categories can be collapsable.
+A simple lightweight plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories allowing you to manage the output of individual questions or categories across your site, output the entire list. The questions and/or categories can be collapsable, making them easier to view. The output from this plugin comes mostly unstyled, allowing for maximum customisation using css.
 
-The output from this plugin comes mostly with very basic styles, allowing for maximum customisation using css. The background and colours can be altered on an options page with a live preview of the output.
-
-The faqs can be categoriesed to display different questions on different pages or add headings.
+The background and text colours can be altered on an options page with a live preview of the output.
 
 = Shortcode examples =
 
@@ -33,13 +31,13 @@ Output faqs for a single category. The first question is open, the rest are coll
 
 **FAQ categories to output**
 
-Only show faqs from these categories. Add the slugs as a comma seperated list. You can find the slug for the categories on the "FAQ Category" page in wordpress.
+Only show faqs from these categories. Add the slugs as a comma separated list. You can find the slug for the categories on the "FAQ Category" page in Wordpress.
 
 `cat="[cat-slug]" (default:blank)`
 
-**Question to exlude**
+**Question to exclude**
 
-If there are any faqs that you want to exclude from being output, add their IDs as a comma seperated list to this attribute.
+If there are any faqs that you want to exclude from being output, add their IDs as a comma separated list to this attribute.
 
 `exclude="[faq-id]" (default:blank)`
 
@@ -52,7 +50,7 @@ Whether to show or hide the category titles. If this is set to hide and the `cat
 
 **Initial state of the questions**
 
-Change the intial state of the questions when a visitor opens the page with the FAQs on. If the questions aren't collapsable then this attribute does nothing.
+Change the initial state of the questions when a visitor opens the page with the FAQs on. If the questions aren't collapsable then this attribute does nothing.
 
 * "close" - all of the answers closed
 * "show" - all of the answers expanded
@@ -62,7 +60,7 @@ Change the intial state of the questions when a visitor opens the page with the 
 
 **Initial state of the categories**
 
-Change the intial state of the categories when a visitor opens the page with the FAQs on. If the categories aren't collapsable then this attribute does nothing.
+Change the initial state of the categories when a visitor opens the page with the FAQs on. If the categories aren't collapsable then this attribute does nothing.
 
 * "close" - all of the categories closed
 * "show" - all of the categories expanded
@@ -104,7 +102,7 @@ If you have any feedback or require any support using this plugin, get in touch 
 1. Download the plugin files
 1. Upload the plugin files to the `/wp-content/plugins/` directory of your site
 1. Activate the plugin through the 'Plugins' menu in Wordpress
-1. Add questions as custom posts in wordpress
+1. Add questions as custom posts in Wordpress
 1. Add the `[faqs][/faqs]` shortcode where you want the questions to be output
 1. Use the shortcode options to customise how the questions gets displayed
 
@@ -112,7 +110,7 @@ If you have any feedback or require any support using this plugin, get in touch 
 
 = Where do I change my category title? =
 
-Change the title of the category on the FAQ Category page in wordpress
+Change the title of the category on the FAQ Category page in Wordpress
 
 your.website/wp-admin/edit-tags.php?taxonomy=faqs_cat&post_type=faqs
 
@@ -120,20 +118,26 @@ your.website/wp-admin/edit-tags.php?taxonomy=faqs_cat&post_type=faqs
 
 If your questions aren't being output you may not have added a category to the questions. Change the `title` attribute to hide and leave the `cat` attribute blank to show all of the categories including the uncategorised options.
 
-= Does this plugin support category higherarchy? =
+= Does this plugin support category hierarchy? =
 
-This plugin doesn't support categories with a higherarchy.
+This plugin doesn't support categories with a hierarchy.
+
+= Does this plugin work on multisite? =
+
+A previous version of this plugin is used on a multisite install, but the newer features haven't been tested on multisite.
 
 == Screenshots ==
+
+1. Customising the output in Wordpress
 
 == Changelog ==
 
 = 1.1.0 =
 
 * Published plugin
-* Added options page to wordpress
+* Added options page to Wordpress
 
-= 1.0.* =
+= Earlier =
 
 * Developed plugin
 * Added categories
