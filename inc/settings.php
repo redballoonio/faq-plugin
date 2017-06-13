@@ -9,14 +9,16 @@ function rbd_faqs_settings_register($post_id){
     add_settings_section( 'rbd-faq-settings-1', 'FAQ Settings', 'rbd_faq_settings_section_1_output', 'rbd-faq-options' );
 
     // Add settings
-    add_settings_field( 'rbd-faq-question-color', 'FAQ Question Color', 'rbd_faq_question_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
-    add_settings_field( 'rbd-faq-question-bg', 'FAQ Question Background', 'rbd_faq_question_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-question-color', 'Question Color', 'rbd_faq_question_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-question-bg', 'Question Background', 'rbd_faq_question_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
 
-    add_settings_field( 'rbd-faq-category-color', 'FAQ Question Color', 'rbd_faq_category_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
-    add_settings_field( 'rbd-faq-category-bg', 'FAQ Question Color', 'rbd_faq_category_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-category-color', 'Category Color', 'rbd_faq_category_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-category-bg', 'Category Background', 'rbd_faq_category_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
 
-    add_settings_field( 'rbd-faq-answer-color', 'FAQ Question Color', 'rbd_faq_answer_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
-    add_settings_field( 'rbd-faq-answer-bg', 'FAQ Question Color', 'rbd_faq_answer_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-answer-color', 'Answer Color', 'rbd_faq_answer_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+    add_settings_field( 'rbd-faq-answer-bg', 'Answer Background', 'rbd_faq_answer_bg_output', 'rbd-faq-options', 'rbd-faq-settings-1');
+
+    add_settings_field( 'rbd-faq-icon-color', 'Icon color', 'rbd_faq_icon_color_output', 'rbd-faq-options', 'rbd-faq-settings-1');
 
     // Register setting to be tracked by wordpress:
     register_setting( 'rbd-faq-settings-1', 'rbd-faq-question-color' );
@@ -27,12 +29,16 @@ function rbd_faqs_settings_register($post_id){
 
     register_setting( 'rbd-faq-settings-1', 'rbd-faq-answer-color' );
     register_setting( 'rbd-faq-settings-1', 'rbd-faq-answer-bg' );
+
+    register_setting( 'rbd-faq-settings-1', 'rbd-faq-icon-color' );
 };
 
 
 function rbd_faq_settings_section_1_output() {
-    // This content goes above the options  
-    echo 'This is the first section of the template\'s settings page.';
+    ?>
+    <p>These options can be used to change the style of the outputted FAQs.
+    <p><em>These options must be a <a href="https://www.w3schools.com/colors/default.asp" target="_blank">valid css colour</a>.</em></p>
+    <?php
 };
 
 function rbd_faq_question_color_output(){
@@ -60,6 +66,11 @@ function rbd_faq_answer_color_output(){
 function rbd_faq_answer_bg_output(){
     $setting = esc_attr( get_option( 'rbd-faq-answer-bg' ) );
     echo '<input type="text" name="rbd-faq-answer-bg" value="' . $setting . '" />';
+}
+
+function rbd_faq_icon_color_output(){
+    $setting = esc_attr( get_option( 'rbd-faq-icon-color' ) );
+    echo '<input type="text" name="rbd-faq-icon-color" value="' . $setting . '" />';
 }
 
 
@@ -105,6 +116,12 @@ function rbd_faq_options_page_callback(){
     <div class="wrap">
         <h2>My Plugin Options</h2>
 
+        <form action="options.php" method="POST" id="options-form">
+            <?php settings_fields( 'rbd-faq-settings-1' ); ?>
+            <?php do_settings_sections( 'rbd-faq-options' ); ?>
+            <?php submit_button(); ?>
+        </form>
+
         <h3>Preview</h3>
 
         <div id="rbd-faq-preview">
@@ -113,11 +130,6 @@ function rbd_faq_options_page_callback(){
             </div>
         </div>
 
-        <form action="options.php" method="POST" id="options-form">
-            <?php settings_fields( 'rbd-faq-settings-1' ); ?>
-            <?php do_settings_sections( 'rbd-faq-options' ); ?>
-            <?php submit_button(); ?>
-        </form>
     </div>
     <?php
 };

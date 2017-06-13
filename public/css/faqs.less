@@ -1,44 +1,75 @@
-@close-icon-color: #3f51b5;
+/* 
+# Styles for the faq plugin.
 
-.faq-section{
+This is the bash function used to compile the styles.
+
+```
+function rb-lessc() {
+  # Example: $ rb-lessc faqs
+  #          input  : faqs.less
+  #          output : faqs.min.css
+  # Compiles a less file. Autopreffixes all of the css, combines media queries and then minifies all the styles.
+
+  lessc  --group-css-media-queries --autoprefix="Android >= 2.3,BlackBerry >= 7,Firefox >= 4,Chrome >= 9,Explorer >= 9,iOS >= 5,Opera >= 11,Safari >= 5,OperaMobile >= 11,OperaMini >= 6,ChromeAndroid >= 9,FirefoxAndroid >= 4,ExplorerMobile >= 9" $1.less $1.min.css --clean-css
+}
+```
+
+You will need these installed globally:
+* less
+* less-plugin-autoprefixyou
+* less-plugin-clean-css
+* less-plugin-group-css-media-queries
+*/
+
+.rbd-faq-section{
     .show-hide{
         position: relative;
         display: block;
+        border: none;
+        box-shadow: none;
+        text-decoration: none;
     }
 }
 
 .rbd-faq-section{
     .rbd-faq-cat-title{
         h4{
+            color: inherit;
             margin: 0;
         }
     }
-
-    .rbd-faq-cat-title,
+    .rbd-faq-category>.rbd-faq-cat-title,
     .show-hide,
     .rbd-faq-sliding-div{
         display: block;
         padding: 1rem 0.5rem;
         margin-bottom: 0.3rem;
     }
+    .rbd-faq-category>.rbd-faq-sliding-div{
+        padding:0;
+    }
 }
 
-.rbd-arrow,
-.rbd-plus .rbd-arrow{
+.arrow,
+.plus .arrow{
     .close-icon{
         // The color the arrow can be changed by changing the fill color in the svg element.
         position: absolute;
-        right: 0;
-        top: 0;
+        right: 0.5rem;
+        top: ~"calc(50% - 10px)";
         height: 20px;
         width: 20px;
         transform-origin: center;
         transition: transform .5s;
-        background-image: url(../images/triangle.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 20px 10px;
+        border-color: transparent transparent currentColor transparent;
+
         transform: rotate(180deg);
+
         &::before, &::after{
             content: none;
         }
@@ -47,18 +78,18 @@
         transform: rotate(0);
     }
 }
-.rbd-plus,
-.rbd-arrow .rbd-plus{
+.plus,
+.arrow .plus{
     .close-icon{
         position: absolute;
-        right: 0;
-        top: 0;
+        right: 0.5rem;
+        top: ~"calc(50% - 10px)";
         height: 20px;
         width: 20px;
         transform-origin: center;
         transition: transform .5s;
         transform: rotate(-45deg);
-        background-image: none;
+        border: none;
         &::before,
         &::after{
             position: absolute;
@@ -68,7 +99,7 @@
             width: 100%;
             height: 1px;
             content: ' ';
-            background-color: @close-icon-color;
+            background-color: currentColor;
         }
         &::before{
             transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -81,7 +112,7 @@
         transform: rotate(0);
     }
 }
-.rbd-arrow .none .close-icon,
-.rbd-plus .none .close-icon{
+.arrow .none .close-icon,
+.plus .none .close-icon{
     display: none!important;
 }
