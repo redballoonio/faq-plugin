@@ -49,7 +49,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
 
     // If there is a target Question GET variable:
     $target_question = isset($_GET['targetQuestion']) ? intval($_GET['targetQuestion']) : 0 ;
-    
+
 	// For each required category....
     if (count($faqs_cats)>0 && ($title == 'show' OR ($collapsable == 'both' OR $collapsable == 'category'))){
         foreach( $faqs_cats as $faqs_cat ) {
@@ -67,12 +67,13 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 'post_type' => 'faqs',
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
-                'tax_query' => array(array(
-                    'taxonomy' => 'faqs_cat',
-                    'field' => 'slug',
-                    'terms' => array($faqs_cat->slug),
-                    'operator' => 'IN'
-                    ) 
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'faqs_cat',
+                        'field' => 'slug',
+                        'terms' => array($faqs_cat->slug),
+                        'operator' => 'IN'
+                    )
                 ),
                 'post_status' => 'publish',
                 'exclude' => $exclude
@@ -90,7 +91,10 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             }
 
             $show_category_bool = false;
-            if (($show_category === 'first' AND $over_ride_show === false AND $cat_count === 1) OR $show_category === 'show' OR $over_ride_show === true) {
+            
+            if (($show_category === 'first' AND $over_ride_show === false AND $cat_count === 1) OR 
+                $show_category === 'show' OR 
+                $over_ride_show === true) {
                 $show_category_bool = true;
             }
 
@@ -116,11 +120,12 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 }
                 $combined_output .= '>';
 
-
             } else {
                 $combined_output .= $cat_title;
             }
+
             $question_count = 1;
+
             foreach($faqs_cpt as $faq) {
 
                 $question_output = '';

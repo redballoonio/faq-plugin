@@ -5,29 +5,42 @@ padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){va
 
 /* Script that turns messages from the parent into styles */
 (function() {
-    var custStyle = '';
 
+    // Add style tag to header which will be updated later:
     var styleTag = document.createElement("style");
     styleTag.id = "dynamic-styles";
-
     document.head.append(styleTag);
 
+
+    // Listen for post messages on the window.
     window.addEventListener('message', function(e) {
 
         if (!e) {
+            // If no message
             return false;
         };
 
-        var data = parseMessage(decodeURIComponent(e.data));
+        // Unescape the post data:
+        var unencoded = decodeURIComponent(e.data);
 
+        // Turned unencoded string into key value pair
+        var data = parseMessage(unencoded);
+
+        // Turn key value pair into css
         var css = dataToCss(data);
 
-        console.log(data, css);
+        // console.log(data, css);
 
+        // Update the css in the head of the document
         styleTag.innerHTML = css;
 
     });
-
+    
+    /**
+     * Turns the post message into a key value pair
+     * @param {String} raw 
+     * @return {Object}
+     */
     function parseMessage(raw) {
         var dataRaw = raw;
         var dataSplit = dataRaw.split('&');
@@ -40,6 +53,11 @@ padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){va
         return data;
     };
 
+    /**
+     * Turns the parsed message into css
+     * @param {Object} data 
+     * @return {String} 
+     */
     function dataToCss(data) {
 
         // Answer styles:
