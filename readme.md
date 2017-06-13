@@ -14,7 +14,7 @@ A simple, lightweight plugin for managing and displaying frequently asked questi
 
 A simple, lightweight plugin for managing and displaying Frequently asked questions using a custom post type. The faqs are output using a shortcode and can be divided into multiple categories allowing you to manage the output of individual questions or categories across your site, output the entire list. The questions and/or categories can be collapsable, making them easier to view. The output from this plugin comes mostly unstyled, allowing for maximum customisation using css.
 
-The background and text colours can be altered on an options page with a live preview of the output.
+The background and text colours can be altered on an options page with a live preview of the output. These options accept all valid background-color css values (rgba, hex, etc.).
 
 
 ### Shortcode examples 
