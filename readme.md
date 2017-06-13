@@ -152,7 +152,7 @@ A previous version of this plugin is used on a multisite install, but the newer 
 ## Screenshots 
 
 ### 1. Customising the output in Wordpress
-![Example of the live preview](https://github.com/redballoonio/video-plugin/blob/master/screenshots/modal.png "Example of the live preview")
+![Example of the live preview](https://github.com/redballoonio/faq-plugin/blob/master/screenshots/screenshot-1.png "Example of the live preview")
 
 
 ## Changelog 
