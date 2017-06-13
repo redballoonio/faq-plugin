@@ -36,6 +36,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
     if ($icon != 'none') {
         $icon_class = $icon;
     }
+
     $combined_output .= '<div class="rbd-faq-section '.$icon_class.'">';
 
 	// Get the categories
@@ -47,10 +48,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
     static $cat_count = 0;
 
     // If there is a target Question GET variable:
-    $target_question = 0;
-    if ( isset($_GET['targetQuestion']) ) {
-        $target_question = intval($_GET['targetQuestion']);
-    }
+    $target_question = isset($_GET['targetQuestion']) ? intval($_GET['targetQuestion']) : 0 ;
+    
 	// For each required category....
     if (count($faqs_cats)>0 && ($title == 'show' OR ($collapsable == 'both' OR $collapsable == 'category'))){
         foreach( $faqs_cats as $faqs_cat ) {
