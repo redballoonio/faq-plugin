@@ -157,9 +157,10 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 ## Changelog 
 
+### 1.1.1
+* Updated the JavaScript to remove jQuery dependencies.
 
-### 1.1.0 
-
+### 1.1.0
 * Published plugin
 * Added options page to Wordpress
 
