@@ -168,6 +168,9 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                     }
                     $question_output 	.= '" href="#" rel="#rbd-faq-sliding-div-'.$cat_count.'-'.$question_count.'">';
                     $closeIcon = '<div class="close-icon"></div><!--close-icon--></a>';
+                } else {
+                    $question_output    .= '<div class="rbd-faq-question">';
+                    $closeIcon = '</div>';
                 }
                 // Question
                 $question_output 	.= '<div class="rbd-faq-question">';
@@ -254,6 +257,9 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 }
                 $question_output 	.= '" href="#" rel="#rbd-faq-sliding-div-'.$cat_count.'-'.$question_count.'">';
                 $closeIcon = '<div class="close-icon"></div><!--close-icon--></a>';
+            } else {
+                $question_output    .= '<div class="rbd-faq-question">';
+                $closeIcon = '</div>';
             }
             // Question
             $question_output 	.= '<div class="rbd-faq-question">';
