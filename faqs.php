@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 Plugin Name: RB Simple FAQs
 Plugin URI: https://github.com/redballoonio/faq-plugin
 Description: Display frequently asked questions with collapsable display options.
-Version: 1.2.0
+Version: 1.2.2
 Author: Red Balloon Design Ltd.
 Author URI: http://redballoon.io
 License: GPLv2

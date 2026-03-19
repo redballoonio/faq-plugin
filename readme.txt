@@ -143,7 +143,7 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 == Changelog ==
 
-### 1.2.1
+### 1.2.2
 * FAQ question div wrap with rbd-faq-question class when collapsable is set to both.
 
 ### 1.2.0
