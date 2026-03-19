@@ -143,6 +143,9 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 == Changelog ==
 
+### 1.2.1
+* FAQ question div wrap with rbd-faq-question class when collapsable is set to both.
+
 ### 1.2.0
 * Added automatic FAQPage schema output when the [faqs] shortcode is used on a page.
 * Schema only includes the FAQs actually rendered by the shortcode, including category/exclude filtering.
