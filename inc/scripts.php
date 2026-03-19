@@ -1,4 +1,5 @@
 <?php
+// inc/scripts.php
 function rbd_faqs_register_scripts() {
     if ( shortcode_exists('faqs') ) {
         wp_register_style( 'rbd-faqs-styles', plugins_url( '../public/css/faqs.min.css', __FILE__ ) );

@@ -1,4 +1,5 @@
 <?php
+//inc/custom_columns.php
 function rbd_faq_add_column($columns){
 	$columns['id'] = __('ID');
     return $columns;

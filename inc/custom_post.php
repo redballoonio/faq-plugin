@@ -1,4 +1,5 @@
 <?php
+//inc/custom_post.php
 function rbd_create_faqs() {
     register_post_type( 'faqs',
         array(

@@ -157,6 +157,12 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 ## Changelog 
 
+### 1.2.0
+* Added automatic FAQPage schema output when the [faqs] shortcode is used on a page.
+* Schema only includes the FAQs actually rendered by the shortcode, including category/exclude filtering.
+* Fixed question open-state logic where mixed AND/OR conditions could open the wrong items.
+* Improved FAQ output handling for safer title/content rendering.
+
 ### 1.1.1
 * Updated the JavaScript to remove jQuery dependencies.
 

@@ -1,5 +1,5 @@
 <?php
-// Shortcode.php
+// inc/shortcode.php
 function rbd_faqs_shortcode( $atts, $content = null)  {
     wp_enqueue_style('rbd-faqs-styles');
     wp_enqueue_script('rbd-faqs-scripts');
@@ -18,12 +18,13 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
     );
 
 	// Variables for the loop
-	$count = 1;
+	//$count = 1;
 	$combined_output = '';
 	$cat = $cat;
 	$exclude = $exclude;
     $collapse_title = false;
     $collapse_question = false;
+    $schema_items = array();
 
     if ($collapsable == 'category' ||  $collapsable == 'both') {
         $collapse_title = true;
@@ -45,7 +46,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
 
     $faqs_cats = get_terms('faqs_cat');
 
-    static $cat_count = 0;
+    $cat_count = 0;
 
     // If there is a target Question GET variable:
     $target_question = isset($_GET['targetQuestion']) ? intval($_GET['targetQuestion']) : 0 ;
@@ -100,7 +101,7 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             }
 
             if ($title != 'hide' ) {
-                $cat_title .= '<div class="rbd-faq-cat-title"><h4>'.$faqs_cat->name.'</h4></div>';
+                $cat_title .= '<div class="rbd-faq-cat-title"><h4>' . esc_html( $faqs_cat->name ) . '</h4></div>';
             }
 
 
@@ -133,13 +134,30 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 $closeIcon = '';
                 $showQuestion = false;
 
-                if ($question_count === 1 AND 
-                    $show_question === 'first' AND 
-                    $target_question === 0 OR 
-                    $show_question === 'show' 
-                    OR $faq->ID === $target_question) {
+                if (
+                    (
+                        $question_count === 1 &&
+                        $show_question === 'first' &&
+                        $target_question === 0
+                    ) ||
+                    $show_question === 'show' ||
+                    $faq->ID === $target_question
+                ) {
                     $showQuestion = true;
                 }
+                // if ($question_count === 1 AND 
+                //     $show_question === 'first' AND 
+                //     $target_question === 0 OR 
+                //     $show_question === 'show' 
+                //     OR $faq->ID === $target_question) {
+                //     $showQuestion = true;
+                // }
+
+                // FAQs added to schema items
+                $schema_items[] = array(
+                    'question' => wp_strip_all_tags( $faq->post_title ),
+                    'answer'   => wp_strip_all_tags( apply_filters( 'the_content', $faq->post_content ) ),
+                );
 
                 $question_output 	.= '<div class="rbd-faq '.$icon_secondary.'" id="rbd-faq-question-'.$faq->ID.'">';
 
@@ -153,7 +171,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 }
                 // Question
                 $question_output 	.= '<div class="rbd-faq-question">';
-                $question_output 	.= $faq->post_title;
+                $question_output    .= esc_html( $faq->post_title );
+                //$question_output 	.= $faq->post_title;
                 $question_output 	.= '</div><!--question-->'.$closeIcon.'<!--show_hide-->';
                 // Answer
                 if ($collapse_question){
@@ -169,7 +188,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 } else {
                     $question_output     .= '<div class="rbd-faq-answer">';
                 }
-                $question_output 	.= $faq->post_content;
+                //$question_output 	.= $faq->post_content;
+                $question_output    .= apply_filters( 'the_content', $faq->post_content );
                 $question_output 	.= '</div><!--rbd-faq-sliding-div--></div><!--faq-->';
                 $combined_output    .= $question_output;
                 $question_count++;
@@ -199,13 +219,31 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             $closeIcon = '';
             $showQuestion = false;
 
-            if ($question_count === 1 AND 
-                $show_question === 'first' AND 
-                $target_question === 0 OR 
-                $show_question === 'show' 
-                OR $faq->ID === $target_question) {
+            if (
+                (
+                    $question_count === 1 &&
+                    $show_question === 'first' &&
+                    $target_question === 0
+                ) ||
+                $show_question === 'show' ||
+                $faq->ID === $target_question
+            ) {
                 $showQuestion = true;
             }
+
+            // if ($question_count === 1 AND 
+            //     $show_question === 'first' AND 
+            //     $target_question === 0 OR 
+            //     $show_question === 'show' 
+            //     OR $faq->ID === $target_question) {
+            //     $showQuestion = true;
+            // }
+
+            // FAQs added to schema items
+            $schema_items[] = array(
+                'question' => wp_strip_all_tags( $faq->post_title ),
+                'answer'   => wp_strip_all_tags( apply_filters( 'the_content', $faq->post_content ) ),
+            );
 
             $question_output 	.= '<div class="rbd-faq '.$icon_secondary.'" id="rbd-faq-question-'.$faq->ID.'">';
 
@@ -219,7 +257,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             }
             // Question
             $question_output 	.= '<div class="rbd-faq-question">';
-            $question_output 	.= $faq->post_title;
+            //$question_output 	.= $faq->post_title;
+            $question_output    .= esc_html( $faq->post_title );
             $question_output 	.= '</div><!--question-->'.$closeIcon.'<!--show_hide-->';
             // Answer
             if ($collapse_question){
@@ -235,7 +274,8 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             } else {
                 $question_output     .= '<div class="rbd-faq-answer">';
             }
-            $question_output 	.= $faq->post_content;
+            //$question_output 	.= $faq->post_content;
+            $question_output    .= apply_filters( 'the_content', $faq->post_content );
             $question_output 	.= '</div><!--rbd-faq-sliding-div--></div><!--faq-->';
             $combined_output    .= $question_output;
             $question_count++;
@@ -247,6 +287,10 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
 
     $combined_output .= rbd_faqs_output_colours();
 
+    // Add Schema items to the page
+    if ( ! empty( $schema_items ) ) {
+        rbd_faq_schema_add_items( $schema_items );
+    }
 
 	return $combined_output;
 }

@@ -1,5 +1,5 @@
 <?php
-
+// inc/settings.php
 /*
 Register the settings and setting section.
 */
