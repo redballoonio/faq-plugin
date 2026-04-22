@@ -157,6 +157,10 @@ A previous version of this plugin is used on a multisite install, but the newer 
 
 ## Changelog 
 
+### 1.2.3
+* Fixed shortcode category filtering when using `title="hide"` so FAQs can be limited to the selected category without showing the category title.
+* Improved shortcode category loop condition so category-based output still works when category titles are hidden.
+
 ### 1.2.2
 * FAQ question div wrap with rbd-faq-question class when collapsable is set to both.
 

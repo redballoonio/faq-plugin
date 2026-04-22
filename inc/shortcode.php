@@ -47,12 +47,14 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
     $faqs_cats = get_terms('faqs_cat');
 
     $cat_count = 0;
+    $has_category_filter = ( count($cats) > 0 && strlen($cats[0]) > 0 );
 
     // If there is a target Question GET variable:
     $target_question = isset($_GET['targetQuestion']) ? intval($_GET['targetQuestion']) : 0 ;
 
     // For each category....
-    if (count($faqs_cats)>0 && ($title == 'show' OR ($collapsable == 'both' OR $collapsable == 'category'))){
+    if ( count($faqs_cats) > 0 && ( $has_category_filter || $title == 'show' || $collapsable == 'both' || $collapsable == 'category' ) ) {
+    //if (count($faqs_cats)>0 && ($title == 'show' OR ($collapsable == 'both' OR $collapsable == 'category'))){
         foreach( $faqs_cats as $faqs_cat ) {
             // If the cat isn't included:
             if ( count($cats) > 0 AND strlen($cats[0]) > 0 AND !in_array($faqs_cat->slug, $cats) ){
@@ -214,6 +216,17 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             'exclude' => $exclude
         );
 
+        if ( ! empty( $cat ) ) {
+            $faqs_cpt_args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'faqs_cat',
+                    'field'    => 'slug',
+                    'terms'    => $cats,
+                    'operator' => 'IN',
+                )
+            );
+        }
+
         $faqs_cpt = get_posts( $faqs_cpt_args );
         $question_count = 1;
         $cat_count = 0;
@@ -234,14 +247,6 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
             ) {
                 $showQuestion = true;
             }
-
-            // if ($question_count === 1 AND 
-            //     $show_question === 'first' AND 
-            //     $target_question === 0 OR 
-            //     $show_question === 'show' 
-            //     OR $faq->ID === $target_question) {
-            //     $showQuestion = true;
-            // }
 
             // FAQs added to schema items
             $schema_items[] = array(
