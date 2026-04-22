@@ -147,13 +147,6 @@ function rbd_faqs_shortcode( $atts, $content = null)  {
                 ) {
                     $showQuestion = true;
                 }
-                // if ($question_count === 1 AND 
-                //     $show_question === 'first' AND 
-                //     $target_question === 0 OR 
-                //     $show_question === 'show' 
-                //     OR $faq->ID === $target_question) {
-                //     $showQuestion = true;
-                // }
 
                 // FAQs added to schema items
                 $schema_items[] = array(
